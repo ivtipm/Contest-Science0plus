@@ -47,6 +47,17 @@
     В строках файла с ответами должно быть записано по одной цифре: -1, 0, 1 для негативной, нейтральной или позитивной новости соответственно. В файле должно быть столько же строк, сколько и новостей в файле с новостями: test.json</p>    
 
     <p>Пример файла с ответом: <a href="https://raw.githubusercontent.com/ivtipm/ContestScience0plus/master/task1/submission_example.csv"> submission_example.csv </a></p>
+    
+    <h3> Подсказки </h3>
+    <h4> Загрузка данных </h4>
+<code> 
+        import pandas as pd <br>
+        data_tst = pd.read_json( "test.json", orient="records", lines=True ) <br>
+        data_tst.sample(2)          # вывести две случайные строки <br>
+        # data_tst -- таблица с данными <br>
+</code>
+
+    
 
 
 </section>
