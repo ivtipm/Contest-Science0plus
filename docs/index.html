@@ -18,9 +18,9 @@
     Сам конкурс пройдёт в октябре-ноябре.
 
     <h3>Регистрация</h3>
-Отправьте письмо с темой "Конкурс алгоритмов 2021" на адрес: ivt-contest@yandex.ru. 
-    В письме расскажите о себе: как Вас зовут, если Вы студент то укажите группу и вуз.</li> 
- </section>   
+Отправьте письмо с темой "Конкурс алгоритмов 2021" на адрес: ivt-contest@yandex.ru.
+    В письме расскажите о себе: как Вас зовут, если Вы студент то укажите группу и вуз.</li>
+ </section>
 
 
 <section>
@@ -45,20 +45,93 @@
     <p>Позднее будет добавлена страница задачи на Kaggle</p>
 
     <p>
-    В строках файла с ответами должно быть записано по одной цифре: -1, 0, 1 для негативной, нейтральной или позитивной новости соответственно. В файле должно быть столько же строк, сколько и новостей в файле с новостями: test.json</p>    
+    В строках файла с ответами должно быть записано по одной цифре: -1, 0, 1 для негативной, нейтральной или позитивной новости соответственно. В файле должно быть столько же строк, сколько и новостей в файле с новостями: test.json</p>
 
     <p>Пример файла с ответом: <a href="https://raw.githubusercontent.com/ivtipm/ContestScience0plus/master/task1/submission_example.csv"> submission_example.csv </a></p>
-    
+
     <p>Можно отправить ответ несколько раз. Но будет засчитан только последний вариант.</p>
-    
+
     <h3> Подсказки </h3>
     <h4> Загрузка данных </h4>
-        <code>  
+        <code>
         # исходный код на Python <br>
         import pandas as pd <br>
         data_tst = pd.read_json( "test.json", orient="records", lines=True ) <br>
         data_tst.sample(2)          # вывести две случайные строки <br>
         # data_tst -- таблица с данными <br>
+        </code>
+
+
+        <code>
+          // исходный код для PascalABC.NET
+          const
+  n_train = 6612;          // число строк в файле 'train.txt'
+  n_test = 1654;          // число строк а файле 'test.txt'
+
+var
+   enc:=Encoding.UTF8;    // для явного задания универсальной (unicode) кодировки символов файла
+
+   f_train: text;         // для файла с новостями и оценками
+   f_test: text;          // для файла с новостями, без оценок
+   f_out: text;           // для файла с ответами
+
+   train_text:  array [1..n_train] of string;    // новости (для которых известны оценки)
+   train_label: array [1..n_train] of string;    // оценки: (negative, positive или neutral)
+
+   test_text: array [1..n_test] of string;    // новости (для которых неизвестны оценки)
+   test_label: array [1..n_test] of integer;    // оценки: (negative = -1, positive=1, или neutral =0)
+
+   i, t: integer;
+   tmp: string;
+
+begin
+  // =====================
+  // загрузка данных
+  // =====================
+  assign(f_test, 'test.txt');
+  reset(f_test, enc);
+  i:=1;
+  while not EoF(f_test) do
+    begin
+      readln(f_test, tmp);
+      test_text[i] := tmp;
+      i := i + 1;
+    end;
+    close(f_test);
+
+
+  // вывод первых 3 новостей
+  for i:=1 to 3 do
+    begin
+      writeln(train_text[i]);
+      writeln(train_label[i]);
+      writeln();
+    end;
+
+  // =====================
+  // todo: алгоритм определения характера новости: negative, positive или neutral
+  // =====================
+  for i:=1 to n_test do
+  begin
+    test_label[i] := 1;
+  end;
+
+
+  // =====================
+  // запись ответов в файл
+  // =====================
+  assign(f_out, 'submission');
+  rewrite(f_out);
+  for i:=1 to n_test do
+  begin
+    writeln(f_out, test_label[i]);
+  end;
+
+end.
+
+// подсказка для разделения строки по символу |
+//  t := LastPos('|', tmp);
+//  test_label[i] :=  Copy(tmp, t+1, length(tmp)-t);
         </code>
 
     <h4>Методы анализа и представления текста</h4>
@@ -73,13 +146,13 @@
 
 
 <section>
-<h2>Сроки проведения</h2>    
+<h2>Сроки проведения</h2>
 Участие - до 13 ноября <br>
-    
+
 Подведение итогов - до 20 ноября <br>
 </section>
-        
-        
+
+
 <section>
     <h2>***</h2>
 <p>Участвуйте если знаете языки: C, C++, C#, Java, Pascal. </p>
