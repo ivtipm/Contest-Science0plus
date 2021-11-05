@@ -22,7 +22,7 @@ body{
 }
 
 main{
-    width: 800px;
+    width: 1000px;
     height: 100%;
     margin: auto;
 }
@@ -50,6 +50,12 @@ li{
 /* для ссылки в самом низу страницы */
 .github-link{
     margin-top: 5em;
+}
+
+
+code {
+  display: block;
+  white-space: pre-wrap   
 }
 
 
